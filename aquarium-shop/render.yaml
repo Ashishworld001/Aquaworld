@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: aquarium-shop
+    env: node
+    buildCommand: "npm install"
+    startCommand: "npm start"

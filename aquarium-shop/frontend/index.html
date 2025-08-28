@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aquarium Shop</title>
+</head>
+<body>
+  <h1>🐠 Aquarium Fish & Plants Shop</h1>
+  <button onclick="placeOrder()">Buy Fish</button>
+
+  <script>
+    async function placeOrder() {
+      const order = {
+        orderNumber: Date.now(),
+        products: [{ name: "Goldfish", qty: 2 }],
+        totalPrice: 200,
+        deliveryCharge: 50,
+        customerPhone: "+911234567890",
+        customerEmail: "test@example.com"
+      };
+
+      const res = await fetch("/api/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order)
+      });
+
+      const data = await res.json();
+      alert(data.message);
+    }
+  </script>
+</body>
+</html>
